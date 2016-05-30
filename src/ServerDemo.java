@@ -28,21 +28,28 @@ public class ServerDemo {
 				//write back received input to socket output stream => send text back to client
 				out.println(inputLine);
 			}
-			
-			if (!serverSocket.isClosed()) serverSocket.close();			
 		} catch (IOException e) { 
 			e.printStackTrace();
 			
-			if (serverSocket != null && !serverSocket.isClosed()) {
-				try {
-					serverSocket.close();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
+			closeConnection(serverSocket);
 		}
 		
+		closeConnection(serverSocket);
 		System.out.println("Server done.");
 	}
 
+	/**
+	 * closes socket connection
+	 * 
+	 * @param serverSocket socket for current connection
+	 */
+	private static void closeConnection(ServerSocket serverSocket) {
+		if (serverSocket != null && !serverSocket.isClosed()) {
+			try {
+				serverSocket.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		};
+	}
 }

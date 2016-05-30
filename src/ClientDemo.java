@@ -31,22 +31,31 @@ public class ClientDemo {
 					//receiving from server over socket input stream
 					System.out.println("server at "+ echoSocket.getInetAddress().getHostAddress() + " responses with echo: " + in.readLine());
 				}
-			}
-			
-			if (echoSocket != null && !echoSocket.isClosed()) echoSocket.close();
+			}			
 		} catch (IOException e) {
 			e.printStackTrace();
 			
-			if (echoSocket != null && !echoSocket.isClosed()) {
-				try {
-					echoSocket.close();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			};
+			closeConnection(echoSocket);
 		}
 		
+		closeConnection(echoSocket);
+		
 		System.out.println("Client Done.");
+	}
+	
+	/**
+	 * closes socket connection
+	 * 
+	 * @param echoSocket socket for current connection
+	 */
+	private static void closeConnection(Socket echoSocket) {
+		if (echoSocket != null && !echoSocket.isClosed()) {
+			try {
+				echoSocket.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		};
 	}
 
 }
