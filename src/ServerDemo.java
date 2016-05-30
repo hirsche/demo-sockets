@@ -10,6 +10,7 @@ public class ServerDemo {
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
 		try {
+			// open server socket
 			serverSocket = new ServerSocket(Config.SOCKET_PORT);
 			
 			System.out.println("wating for connections on host:"+ serverSocket.getInetAddress().getHostName() + ", port: " + Config.SOCKET_PORT + " ... ");

@@ -20,16 +20,20 @@ public class ClientDemo {
 			                    new InputStreamReader(System.in));
 	
 			String userInput;
-			while ((userInput = stdIn.readLine()) != null)
+			while (!echoSocket.isClosed() && (userInput = stdIn.readLine()) != null)
 			{	
-				//sending to server over socket output stream
-				out.println(userInput);
-				
-				//receiving from server over socket input stream
-				System.out.println("server response echo: " + in.readLine());
+				if (userInput.equals("quit")) {
+					echoSocket.close();
+				} else {
+					//sending to server over socket output stream
+					out.println(userInput);
+					
+					//receiving from server over socket input stream
+					System.out.println("server at "+ echoSocket.getInetAddress().getHostAddress() + " responses with echo: " + in.readLine());
+				}
 			}
 			
-			echoSocket.close();			
+			if (echoSocket != null && !echoSocket.isClosed()) echoSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			
