@@ -13,9 +13,13 @@ public class ClientDemo {
 			System.out.println("Client starting...");
 			echoSocket = new Socket(Config.SOCKET_NAME, Config.SOCKET_PORT);
 
+			//send stream to remote server host
 			PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
+			
+			//receive a stream from remote server host
 			BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 	
+			// standard-in reader
 			BufferedReader stdIn = new BufferedReader(
 			                    new InputStreamReader(System.in));
 	
@@ -23,6 +27,7 @@ public class ClientDemo {
 			while (!echoSocket.isClosed() && (userInput = stdIn.readLine()) != null)
 			{	
 				if (userInput.equals("quit")) {
+					// close connection if quit has been entered
 					echoSocket.close();
 				} else {
 					//sending to server over socket output stream
