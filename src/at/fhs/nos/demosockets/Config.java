@@ -1,3 +1,4 @@
+package at.fhs.nos.demosockets;
 
 public class Config {
 	public final static int SOCKET_PORT = 4711; // > 1024
