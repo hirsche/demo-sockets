@@ -14,11 +14,12 @@ public class ServerDemo {
 			// open server socket
 			serverSocket = new ServerSocket(Config.SOCKET_PORT);
 			
+			// info output
 			System.out.println("wating for connections on host:"+ serverSocket.getInetAddress().getHostName() + ", port: " + Config.SOCKET_PORT + " ... ");
 			Socket clientSocket = serverSocket.accept();
 			System.out.println("connected.");
 			
-			
+			// open print writer
 			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 	
 			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
