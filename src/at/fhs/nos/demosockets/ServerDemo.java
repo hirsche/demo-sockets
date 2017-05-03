@@ -24,7 +24,9 @@ public class ServerDemo {
 	
 			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 	
+			// create string for client input
 			String inputLine;
+			// read client input
 			while ((inputLine = in.readLine()) != null) //read from socket input stream
 			{
 				//write back received input to socket output stream => send text back to client
