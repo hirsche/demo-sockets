@@ -33,6 +33,7 @@ public class ClientDemo {
 				} else {
 					//sending to server over socket output stream
 					out.println(userInput);
+					// empty all buffers and send message
 					out.flush();
 					
 					//receiving from server over socket input stream
