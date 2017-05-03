@@ -33,6 +33,7 @@ public class ClientDemo {
 				} else {
 					//sending to server over socket output stream
 					out.println(userInput);
+					out.flush();
 					
 					//receiving from server over socket input stream
 					System.out.println("server at "+ echoSocket.getInetAddress().getHostAddress() + " responses with echo: " + in.readLine());

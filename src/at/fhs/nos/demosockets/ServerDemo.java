@@ -29,6 +29,7 @@ public class ServerDemo {
 			{
 				//write back received input to socket output stream => send text back to client
 				out.println(inputLine);
+				out.flush();
 			}
 		} catch (IOException e) { 
 			e.printStackTrace();
